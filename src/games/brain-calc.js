@@ -25,8 +25,6 @@ export const gameStep = () => {
   const second = getRandomInt()
   const operation = getRandomInt(3)
 
-  console.log()
-
   const expression = createExpressionString(first, second, operation)
   askQuestion(expression)
 
