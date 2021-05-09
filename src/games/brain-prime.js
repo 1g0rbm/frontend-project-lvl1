@@ -1,20 +1,20 @@
-import { askQuestion, readAnswer } from '../dialog.js'
-import { generateRandomNumber, isPrime } from '../mathematic.js'
+import { askQuestion, readAnswer } from '../dialog.js';
+import { generateRandomNumber, isPrime } from '../mathematic.js';
 
-const CORRECT = 'yes'
-const INCORRECT = 'no'
+const CORRECT = 'yes';
+const INCORRECT = 'no';
 
-const boolToText = (bool) => (bool ? CORRECT : INCORRECT)
+const boolToText = (bool) => (bool ? CORRECT : INCORRECT);
 
-const getCorrectAnswer = (number) => boolToText(isPrime(number))
+const getCorrectAnswer = (number) => boolToText(isPrime(number));
 
 export const gameStep = () => {
-  const number = generateRandomNumber(1, 1000)
-  askQuestion(number)
+  const number = generateRandomNumber(1, 1000);
+  askQuestion(number);
 
-  const userAnswer = readAnswer()
+  const userAnswer = readAnswer();
 
-  return [getCorrectAnswer(number), userAnswer]
-}
+  return [getCorrectAnswer(number), userAnswer];
+};
 
-export const GAME_QUESTION = `Answer "${CORRECT}" if given number is prime. Otherwise answer "${INCORRECT}".`
+export const GAME_QUESTION = `Answer "${CORRECT}" if given number is prime. Otherwise answer "${INCORRECT}".`;

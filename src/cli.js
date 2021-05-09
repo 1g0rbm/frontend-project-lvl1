@@ -1,6 +1,6 @@
-import { askUserName, sayWelcome, sayHello } from './dialog.js'
+import { askUserName, sayWelcome, sayHello } from './dialog.js';
 
 export default () => {
   sayWelcome();
-  sayHello(askUserName())
-}
+  sayHello(askUserName());
+};
