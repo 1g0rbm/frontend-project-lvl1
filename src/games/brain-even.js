@@ -1,10 +1,8 @@
 import { askQuestion, readAnswer } from '../dialog.js'
-import { generateRandomNumber } from '../mathematic.js'
+import { generateRandomNumber, isEval } from '../mathematic.js'
 
 const CORRECT_ANSWER = 'yes'
 const INCORRECT_ANSWER = 'no'
-
-const isEval = (number) => number % 2 === 0
 
 const boolToText = (bool) => (bool ? CORRECT_ANSWER : INCORRECT_ANSWER)
 
