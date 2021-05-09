@@ -1,10 +1,8 @@
 import { askQuestion, readAnswer } from '../dialog.js'
+import { generateRandomNumber } from '../mathematic.js'
 
-const MAX_NUMBER = 1000
 const CORRECT_ANSWER = 'yes'
 const INCORRECT_ANSWER = 'no'
-
-const getRandomInt = () => Math.floor(Math.random() * MAX_NUMBER)
 
 const isEval = (number) => number % 2 === 0
 
@@ -15,7 +13,7 @@ const getCorrectAnswer = (number) => boolToText(isEval(number))
 export const GAME_QUESTION = `Answer "${CORRECT_ANSWER}" if the number is even, otherwise answer "${INCORRECT_ANSWER}".`
 
 export const gameStep = () => {
-  const question = getRandomInt()
+  const question = generateRandomNumber(0, 1000)
   askQuestion(question)
 
   const userAnswer = readAnswer()

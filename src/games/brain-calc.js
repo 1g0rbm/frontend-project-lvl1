@@ -1,9 +1,7 @@
 import { askQuestion, readAnswer } from '../dialog.js'
+import { generateRandomNumber } from '../mathematic.js';
 
-const MAX_NUMBER = 100
 const OPERATIONS = ['+', '-', '*']
-
-const getRandomInt = (max = MAX_NUMBER) => Math.floor(Math.random() * max)
 
 const createExpressionString = (first, second, operation) => `${first} ${OPERATIONS[operation]} ${second}`
 
@@ -21,9 +19,9 @@ const calculateExpression = (first, second, operation) => {
 export const GAME_QUESTION = 'What is the result of the expression?'
 
 export const gameStep = () => {
-  const first = getRandomInt()
-  const second = getRandomInt()
-  const operation = getRandomInt(3)
+  const first = generateRandomNumber(0, 100)
+  const second = generateRandomNumber(0, 100)
+  const operation = generateRandomNumber(0, 3)
 
   const expression = createExpressionString(first, second, operation)
   askQuestion(expression)
