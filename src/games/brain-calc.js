@@ -21,7 +21,7 @@ export const GAME_QUESTION = 'What is the result of the expression?'
 export const gameStep = () => {
   const first = generateRandomNumber(0, 100)
   const second = generateRandomNumber(0, 100)
-  const operation = generateRandomNumber(0, 3)
+  const operation = generateRandomNumber(0, 2)
 
   const expression = createExpressionString(first, second, operation)
   askQuestion(expression)
