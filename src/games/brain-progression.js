@@ -1,9 +1,19 @@
-import { generateRandomNumber, generateArithmeticProgression } from '../mathematic.js';
+import generateRandomNumber from '../random.js';
 import engine from '../index.js';
 
-export const GAME_QUESTION = 'What number is missing in the progression?';
+const GAME_QUESTION = 'What number is missing in the progression?';
 
-export const gameStep = () => {
+const generateArithmeticProgression = (length = 10, step = 4) => {
+  const progression = [generateRandomNumber(0, 100)];
+  for (let i = 0; i <= length; i += 1) {
+    const last = progression[progression.length - 1];
+    progression.push(last + step);
+  }
+
+  return progression;
+};
+
+const gameStep = () => {
   const length = generateRandomNumber(5, 10);
   const step = generateRandomNumber(1, 5);
   const collection = generateArithmeticProgression(length, step);

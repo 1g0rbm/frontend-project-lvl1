@@ -1,5 +1,7 @@
-import { generateRandomNumber } from '../mathematic.js';
+import generateRandomNumber from '../random.js';
 import engine from '../index.js';
+
+const GAME_QUESTION = 'What is the result of the expression?';
 
 const OPERATIONS = ['+', '-', '*'];
 
@@ -7,7 +9,7 @@ const getRandomOperation = () => OPERATIONS[generateRandomNumber(0, OPERATIONS.l
 
 const getQuestion = (firstNum, secondNum, operation) => `${firstNum} ${operation} ${secondNum}`;
 
-const getCorrectAnswer = (firstNum, secondNum, operation) => {
+const calculate = (firstNum, secondNum, operation) => {
   switch (operation) {
     case OPERATIONS[0]:
       return firstNum + secondNum;
@@ -20,15 +22,13 @@ const getCorrectAnswer = (firstNum, secondNum, operation) => {
   }
 };
 
-const GAME_QUESTION = 'What is the result of the expression?';
-
 const gameStep = () => {
   const firstNum = generateRandomNumber(0, 100);
   const secondNum = generateRandomNumber(0, 100);
   const operation = getRandomOperation();
 
   return [
-    getCorrectAnswer(firstNum, secondNum, operation).toString(),
+    calculate(firstNum, secondNum, operation).toString(),
     getQuestion(firstNum, secondNum, operation),
   ];
 };

@@ -1,19 +1,27 @@
-import { generateRandomNumber, isPrime } from '../mathematic.js';
+import generateRandomNumber from '../random.js';
 import engine from '../index.js';
 
-const CORRECT = 'yes';
-const INCORRECT = 'no';
+const GAME_QUESTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const boolToText = (bool) => (bool ? CORRECT : INCORRECT);
+const isPrime = (number) => {
+  if (number % 2 === 0) {
+    return number === 2;
+  }
 
-const getCorrectAnswer = (number) => boolToText(isPrime(number));
+  let divider = 3;
+  while (divider * divider <= number && number % divider !== 0) {
+    divider += 2;
+  }
 
-const gameStep = () => {
-  const number = generateRandomNumber(1, 1000);
-
-  return [getCorrectAnswer(number), number];
+  return divider * divider > number;
 };
 
-const GAME_QUESTION = `Answer "${CORRECT}" if given number is prime. Otherwise answer "${INCORRECT}".`;
+const getCorrectAnswer = (number) => (isPrime(number) ? 'yes' : 'no');
+
+const gameStep = () => {
+  const questionNumber = generateRandomNumber(1, 1000);
+
+  return [getCorrectAnswer(questionNumber), questionNumber];
+};
 
 export default () => engine(GAME_QUESTION, gameStep);

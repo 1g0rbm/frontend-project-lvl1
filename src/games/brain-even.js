@@ -1,19 +1,16 @@
-import { generateRandomNumber, isEval } from '../mathematic.js';
+import generateRandomNumber from '../random.js';
 import engine from '../index.js';
 
-const CORRECT_ANSWER = 'yes';
-const INCORRECT_ANSWER = 'no';
+const GAME_QUESTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const boolToText = (bool) => (bool ? CORRECT_ANSWER : INCORRECT_ANSWER);
+const isEval = (number) => number % 2 === 0;
 
-const getCorrectAnswer = (number) => boolToText(isEval(number));
-
-const GAME_QUESTION = `Answer "${CORRECT_ANSWER}" if the number is even, otherwise answer "${INCORRECT_ANSWER}".`;
+const getCorrectAnswer = (number) => (isEval(number) ? 'yes' : 'no');
 
 const gameStep = () => {
-  const question = generateRandomNumber(0, 1000);
+  const questionNumber = generateRandomNumber(0, 1000);
 
-  return [getCorrectAnswer(question), question];
+  return [getCorrectAnswer(questionNumber), questionNumber];
 };
 
 export default () => engine(GAME_QUESTION, gameStep);

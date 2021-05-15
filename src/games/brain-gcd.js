@@ -1,7 +1,19 @@
-import { generateRandomNumber, getGcd } from '../mathematic.js';
+import generateRandomNumber from '../random.js';
 import engine from '../index.js';
 
 const GAME_QUESTION = 'Find the greatest common divisor of given numbers.';
+
+const getGcd = (a, b) => {
+  if (a === 0 || b === 0) {
+    return a + b;
+  }
+
+  if (a > b) {
+    return getGcd(a % b, b);
+  }
+
+  return getGcd(a, b % a);
+};
 
 const gameStep = () => {
   const first = generateRandomNumber(0, 100);
