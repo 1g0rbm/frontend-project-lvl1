@@ -1,19 +1,17 @@
-import {
-  say, sayHello, sayWelcome, askUserName, askQuestion, readAnswer,
-} from './dialog.js';
+import { say, ask } from './dialog.js';
 
 const STEP_COUNT = 3;
 
 export default (gameQuestion, gameStep) => {
-  sayWelcome();
+  say('Welcome to the Brain Games!');
 
-  const usrName = askUserName();
-  sayHello(usrName);
+  const usrName = ask('May I have your name? ');
+  say(`Hello, ${usrName}!`);
   say(gameQuestion);
 
   const gameCycle = (step, [correctAnswer, question]) => {
-    askQuestion(question);
-    const usrAnswer = readAnswer();
+    say(`Question: ${question}`);
+    const usrAnswer = ask('Your answer: ');
     if (correctAnswer !== usrAnswer) {
       say(`'${usrAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       return false;
