@@ -1,5 +1,5 @@
 import {
-  say, sayHello, sayWelcome, askUserName,
+  say, sayHello, sayWelcome, askUserName, askQuestion, readAnswer,
 } from './dialog.js';
 
 const STEP_COUNT = 3;
@@ -11,7 +11,9 @@ export default (gameQuestion, gameStep) => {
   sayHello(usrName);
   say(gameQuestion);
 
-  const gameCycle = (step, [correctAnswer, usrAnswer]) => {
+  const gameCycle = (step, [correctAnswer, question]) => {
+    askQuestion(question);
+    const usrAnswer = readAnswer();
     if (correctAnswer !== usrAnswer) {
       say(`'${usrAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       return false;

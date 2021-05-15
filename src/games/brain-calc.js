@@ -1,4 +1,3 @@
-import { askQuestion, readAnswer } from '../dialog.js';
 import { generateRandomNumber } from '../mathematic.js';
 import engine from '../index.js';
 
@@ -25,11 +24,8 @@ const gameStep = () => {
   const operation = generateRandomNumber(0, 2);
 
   const expression = createExpressionString(first, second, operation);
-  askQuestion(expression);
 
-  const userAnswer = readAnswer();
-
-  return [calculateExpression(first, second, operation).toString(), userAnswer];
+  return [calculateExpression(first, second, operation).toString(), expression];
 };
 
 export default () => engine(GAME_QUESTION, gameStep);

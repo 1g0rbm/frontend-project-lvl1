@@ -1,4 +1,3 @@
-import { askQuestion, readAnswer } from '../dialog.js';
 import { generateRandomNumber, isEval } from '../mathematic.js';
 import engine from '../index.js';
 
@@ -13,11 +12,8 @@ const GAME_QUESTION = `Answer "${CORRECT_ANSWER}" if the number is even, otherwi
 
 const gameStep = () => {
   const question = generateRandomNumber(0, 1000);
-  askQuestion(question);
 
-  const userAnswer = readAnswer();
-
-  return [getCorrectAnswer(question), userAnswer];
+  return [getCorrectAnswer(question), question];
 };
 
 export default () => engine(GAME_QUESTION, gameStep);
