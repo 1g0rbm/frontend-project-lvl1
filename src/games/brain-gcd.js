@@ -1,9 +1,10 @@
 import { askQuestion, readAnswer } from '../dialog.js';
 import { generateRandomNumber, getGcd } from '../mathematic.js';
+import engine from '../index.js';
 
-export const GAME_QUESTION = 'Find the greatest common divisor of given numbers.';
+const GAME_QUESTION = 'Find the greatest common divisor of given numbers.';
 
-export const gameStep = () => {
+const gameStep = () => {
   const first = generateRandomNumber(0, 100);
   const second = generateRandomNumber(0, 100);
 
@@ -13,3 +14,5 @@ export const gameStep = () => {
 
   return [getGcd(first, second).toString(), userAnswer];
 };
+
+export default () => engine(GAME_QUESTION, gameStep);

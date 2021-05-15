@@ -1,5 +1,6 @@
 import { askQuestion, readAnswer } from '../dialog.js';
 import { generateRandomNumber, isPrime } from '../mathematic.js';
+import engine from '../index.js';
 
 const CORRECT = 'yes';
 const INCORRECT = 'no';
@@ -8,7 +9,7 @@ const boolToText = (bool) => (bool ? CORRECT : INCORRECT);
 
 const getCorrectAnswer = (number) => boolToText(isPrime(number));
 
-export const gameStep = () => {
+const gameStep = () => {
   const number = generateRandomNumber(1, 1000);
   askQuestion(number);
 
@@ -17,4 +18,6 @@ export const gameStep = () => {
   return [getCorrectAnswer(number), userAnswer];
 };
 
-export const GAME_QUESTION = `Answer "${CORRECT}" if given number is prime. Otherwise answer "${INCORRECT}".`;
+const GAME_QUESTION = `Answer "${CORRECT}" if given number is prime. Otherwise answer "${INCORRECT}".`;
+
+export default () => engine(GAME_QUESTION, gameStep);

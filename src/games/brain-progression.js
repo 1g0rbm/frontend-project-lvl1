@@ -1,5 +1,6 @@
 import { askQuestion, readAnswer } from '../dialog.js';
 import { generateRandomNumber, generateArithmeticProgression } from '../mathematic.js';
+import engine from '../index.js';
 
 export const GAME_QUESTION = 'What number is missing in the progression?';
 
@@ -17,3 +18,5 @@ export const gameStep = () => {
 
   return [answer.toString(), userAnswer];
 };
+
+export default () => engine(GAME_QUESTION, gameStep);

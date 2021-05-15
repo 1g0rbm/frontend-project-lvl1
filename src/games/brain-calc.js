@@ -1,5 +1,6 @@
 import { askQuestion, readAnswer } from '../dialog.js';
 import { generateRandomNumber } from '../mathematic.js';
+import engine from '../index.js';
 
 const OPERATIONS = ['+', '-', '*'];
 
@@ -16,9 +17,9 @@ const calculateExpression = (first, second, operation) => {
   }
 };
 
-export const GAME_QUESTION = 'What is the result of the expression?';
+const GAME_QUESTION = 'What is the result of the expression?';
 
-export const gameStep = () => {
+const gameStep = () => {
   const first = generateRandomNumber(0, 100);
   const second = generateRandomNumber(0, 100);
   const operation = generateRandomNumber(0, 2);
@@ -30,3 +31,5 @@ export const gameStep = () => {
 
   return [calculateExpression(first, second, operation).toString(), userAnswer];
 };
+
+export default () => engine(GAME_QUESTION, gameStep);
