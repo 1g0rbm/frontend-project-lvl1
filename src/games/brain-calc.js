@@ -3,29 +3,34 @@ import engine from '../index.js';
 
 const OPERATIONS = ['+', '-', '*'];
 
-const createExpressionString = (first, second, operation) => `${first} ${OPERATIONS[operation]} ${second}`;
+const getRandomOperation = () => OPERATIONS[generateRandomNumber(0, OPERATIONS.length - 1)];
 
-const calculateExpression = (first, second, operation) => {
-  switch (OPERATIONS[operation]) {
+const getQuestion = (firstNum, secondNum, operation) => `${firstNum} ${operation} ${secondNum}`;
+
+const getCorrectAnswer = (firstNum, secondNum, operation) => {
+  switch (operation) {
     case OPERATIONS[0]:
-      return first + second;
+      return firstNum + secondNum;
     case OPERATIONS[1]:
-      return first - second;
+      return firstNum - secondNum;
+    case OPERATIONS[2]:
+      return firstNum * secondNum;
     default:
-      return first * second;
+      throw new Error(`Invalid operation "${operation}"`);
   }
 };
 
 const GAME_QUESTION = 'What is the result of the expression?';
 
 const gameStep = () => {
-  const first = generateRandomNumber(0, 100);
-  const second = generateRandomNumber(0, 100);
-  const operation = generateRandomNumber(0, 2);
+  const firstNum = generateRandomNumber(0, 100);
+  const secondNum = generateRandomNumber(0, 100);
+  const operation = getRandomOperation();
 
-  const expression = createExpressionString(first, second, operation);
-
-  return [calculateExpression(first, second, operation).toString(), expression];
+  return [
+    getCorrectAnswer(firstNum, secondNum, operation).toString(),
+    getQuestion(firstNum, secondNum, operation),
+  ];
 };
 
 export default () => engine(GAME_QUESTION, gameStep);
