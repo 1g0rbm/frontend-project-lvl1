@@ -1,7 +1,7 @@
 import generateRandomNumber from '../random.js';
 import engine from '../index.js';
 
-const GAME_QUESTION = 'What number is missing in the progression?';
+const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
 const generateArithmeticProgression = (start = 1, length = 10, step = 4) => {
   const progression = [];
@@ -20,9 +20,9 @@ const gameStep = () => {
 
   const position = generateRandomNumber(0, collection.length - 1);
   const answer = collection[position];
-  collection[position] = '..';
+  const questionCollection = collection.map((item) => (item === 'answer' ? '..' : item));
 
-  return [answer.toString(), collection.join(' ')];
+  return [answer.toString(), questionCollection.join(' ')];
 };
 
-export default () => engine(GAME_QUESTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, gameStep);

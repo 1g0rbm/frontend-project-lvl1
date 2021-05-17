@@ -1,7 +1,7 @@
 import generateRandomNumber from '../random.js';
 import engine from '../index.js';
 
-const GAME_QUESTION = 'What is the result of the expression?';
+const GAME_DESCRIPTION = 'What is the result of the expression?';
 
 const OPERATION_ADD = '+';
 const OPERATION_SUBTRACT = '-';
@@ -37,4 +37,4 @@ const gameStep = () => {
   ];
 };
 
-export default () => engine(GAME_QUESTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, gameStep);
