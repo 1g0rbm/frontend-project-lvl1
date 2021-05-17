@@ -1,6 +1,6 @@
 import { say, ask } from './dialog.js';
 
-const STEP_COUNT = 3;
+const STEPS_COUNT = 3;
 
 export default (gameQuestion, gameStep) => {
   say('Welcome to the Brain Games!');
@@ -19,7 +19,7 @@ export default (gameQuestion, gameStep) => {
 
     say('Correct!');
 
-    if (step >= STEP_COUNT) {
+    if (step >= STEPS_COUNT) {
       return true;
     }
 
