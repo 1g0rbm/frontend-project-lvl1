@@ -20,7 +20,7 @@ const gameStep = () => {
 
   const position = generateRandomNumber(0, collection.length - 1);
   const answer = collection[position];
-  const questionCollection = collection.map((item) => (item === 'answer' ? '..' : item));
+  const questionCollection = collection.map((item) => (item === answer ? '..' : item));
 
   return [answer.toString(), questionCollection.join(' ')];
 };
