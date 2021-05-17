@@ -2,12 +2,12 @@ import { say, ask } from './dialog.js';
 
 const STEPS_COUNT = 3;
 
-export default (gameQuestion, gameStep) => {
+export default (gameDescription, gameStep) => {
   say('Welcome to the Brain Games!');
 
   const usrName = ask('May I have your name? ');
   say(`Hello, ${usrName}!`);
-  say(gameQuestion);
+  say(gameDescription);
 
   const gameCycle = (step, [correctAnswer, question]) => {
     say(`Question: ${question}`);
