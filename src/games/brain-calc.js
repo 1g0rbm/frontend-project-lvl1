@@ -3,7 +3,11 @@ import engine from '../index.js';
 
 const GAME_QUESTION = 'What is the result of the expression?';
 
-const OPERATIONS = ['+', '-', '*'];
+const OPERATION_ADD = '+';
+const OPERATION_SUBTRACT = '-';
+const OPERATION_MULTIPLY = '*';
+
+const OPERATIONS = [OPERATION_ADD, OPERATION_SUBTRACT, OPERATION_MULTIPLY];
 
 const getRandomOperation = () => OPERATIONS[generateRandomNumber(0, OPERATIONS.length - 1)];
 
@@ -11,11 +15,11 @@ const getQuestion = (firstNum, secondNum, operation) => `${firstNum} ${operation
 
 const calculate = (firstNum, secondNum, operation) => {
   switch (operation) {
-    case OPERATIONS[0]:
+    case OPERATION_ADD:
       return firstNum + secondNum;
-    case OPERATIONS[1]:
+    case OPERATION_SUBTRACT:
       return firstNum - secondNum;
-    case OPERATIONS[2]:
+    case OPERATION_MULTIPLY:
       return firstNum * secondNum;
     default:
       throw new Error(`Invalid operation "${operation}"`);
