@@ -3,20 +3,20 @@ import engine from '../index.js';
 
 const GAME_QUESTION = 'What number is missing in the progression?';
 
-const generateArithmeticProgression = (length = 10, step = 4) => {
-  const progression = [generateRandomNumber(0, 100)];
+const generateArithmeticProgression = (start = 1, length = 10, step = 4) => {
+  const progression = [];
   for (let i = 0; i <= length; i += 1) {
-    const last = progression[progression.length - 1];
-    progression.push(last + step);
+    progression.push(start + step * i);
   }
 
   return progression;
 };
 
 const gameStep = () => {
+  const start = generateRandomNumber(0, 100);
   const length = generateRandomNumber(5, 10);
   const step = generateRandomNumber(1, 5);
-  const collection = generateArithmeticProgression(length, step);
+  const collection = generateArithmeticProgression(start, length, step);
 
   const position = generateRandomNumber(0, collection.length - 1);
   const answer = collection[position];
