@@ -3,9 +3,9 @@ import engine from '../index.js';
 
 const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const isEval = (number) => number % 2 === 0;
+const isEven = (number) => number % 2 === 0;
 
-const getCorrectAnswer = (number) => (isEval(number) ? 'yes' : 'no');
+const getCorrectAnswer = (number) => (isEven(number) ? 'yes' : 'no');
 
 const makeGameStep = () => {
   const questionNumber = generateRandomNumber(0, 1000);
