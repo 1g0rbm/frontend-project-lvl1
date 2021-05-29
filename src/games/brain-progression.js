@@ -12,7 +12,7 @@ const generateArithmeticProgression = (start = 1, length = 10, step = 4) => {
   return progression;
 };
 
-const gameStep = () => {
+const makeGameStep = () => {
   const start = generateRandomNumber(0, 100);
   const length = generateRandomNumber(5, 10);
   const step = generateRandomNumber(1, 5);
@@ -25,4 +25,4 @@ const gameStep = () => {
   return [answer.toString(), questionCollection.join(' ')];
 };
 
-export default () => engine(GAME_DESCRIPTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, makeGameStep);

@@ -26,7 +26,7 @@ const calculate = (firstNum, secondNum, operation) => {
   }
 };
 
-const gameStep = () => {
+const makeGameStep = () => {
   const firstNum = generateRandomNumber(0, 100);
   const secondNum = generateRandomNumber(0, 100);
   const operation = getRandomOperation();
@@ -37,4 +37,4 @@ const gameStep = () => {
   ];
 };
 
-export default () => engine(GAME_DESCRIPTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, makeGameStep);

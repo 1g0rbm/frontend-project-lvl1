@@ -18,10 +18,10 @@ const isPrime = (number) => {
 
 const getCorrectAnswer = (number) => (isPrime(number) ? 'yes' : 'no');
 
-const gameStep = () => {
+const makeGameStep = () => {
   const questionNumber = generateRandomNumber(1, 1000);
 
   return [getCorrectAnswer(questionNumber), questionNumber];
 };
 
-export default () => engine(GAME_DESCRIPTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, makeGameStep);

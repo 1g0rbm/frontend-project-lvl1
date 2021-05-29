@@ -2,14 +2,14 @@ import { say, ask } from './dialog.js';
 
 const STEPS_COUNT = 3;
 
-export default (gameDescription, gameStep) => {
+export default (gameDescription, makeGameStep) => {
   say('Welcome to the Brain Games!');
 
   const usrName = ask('May I have your name? ');
   say(`Hello, ${usrName}!`);
   say(gameDescription);
 
-  const gameCycle = (step, [correctAnswer, question]) => {
+  const runGameCycle = (step, [correctAnswer, question]) => {
     say(`Question: ${question}`);
     const usrAnswer = ask('Your answer: ');
     if (correctAnswer !== usrAnswer) {
@@ -23,9 +23,9 @@ export default (gameDescription, gameStep) => {
       return true;
     }
 
-    return gameCycle(step + 1, gameStep());
+    return runGameCycle(step + 1, makeGameStep());
   };
 
-  const result = gameCycle(1, gameStep());
+  const result = runGameCycle(1, makeGameStep());
   say(result ? `Congratulations, ${usrName}!` : `Let's try again, ${usrName}!`);
 };

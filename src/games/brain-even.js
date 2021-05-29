@@ -7,10 +7,10 @@ const isEval = (number) => number % 2 === 0;
 
 const getCorrectAnswer = (number) => (isEval(number) ? 'yes' : 'no');
 
-const gameStep = () => {
+const makeGameStep = () => {
   const questionNumber = generateRandomNumber(0, 1000);
 
   return [getCorrectAnswer(questionNumber), questionNumber];
 };
 
-export default () => engine(GAME_DESCRIPTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, makeGameStep);

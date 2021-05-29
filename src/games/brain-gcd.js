@@ -15,11 +15,11 @@ const getGcd = (a, b) => {
   return getGcd(a, b % a);
 };
 
-const gameStep = () => {
+const makeGameStep = () => {
   const first = generateRandomNumber(0, 100);
   const second = generateRandomNumber(0, 100);
 
   return [getGcd(first, second).toString(), `${first} ${second}`];
 };
 
-export default () => engine(GAME_DESCRIPTION, gameStep);
+export default () => engine(GAME_DESCRIPTION, makeGameStep);
