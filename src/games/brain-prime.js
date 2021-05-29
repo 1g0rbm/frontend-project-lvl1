@@ -19,9 +19,9 @@ const isPrime = (number) => {
 const getCorrectAnswer = (number) => (isPrime(number) ? 'yes' : 'no');
 
 const makeGameStep = () => {
-  const questionNumber = generateRandomNumber(1, 1000);
+  const question = generateRandomNumber(1, 1000);
 
-  return [getCorrectAnswer(questionNumber), questionNumber];
+  return [getCorrectAnswer(question), question];
 };
 
 export default () => engine(GAME_DESCRIPTION, makeGameStep);
